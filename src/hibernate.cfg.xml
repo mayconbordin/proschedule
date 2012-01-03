@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost/proschedule_final</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">servidor</property>
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <property name="hibernate.show_sql">false</property>
+    <mapping resource="com/proschedule/hibernate/mapper/core/calendar/calendar.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/calendar/day.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/component.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/component_detail.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/customer.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/operation.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/operation_type.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/set.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/set_detail.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/scheduling/operation_scheduling.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/scheduling/operation_scheduling_component_detail.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/scheduling/order.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/scheduling/order_detail.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/persistence/set_component.hbm.xml"/>
+    <mapping resource="com/proschedule/hibernate/mapper/core/scheduling/operation_scheduling_set_detail.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

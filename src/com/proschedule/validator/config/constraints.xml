@@ -1,0 +1,278 @@
+<constraint-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://jboss.org/xml/ns/javax/validation/mapping validation-mapping-1.0.xsd"
+                     xmlns="http://jboss.org/xml/ns/javax/validation/mapping">
+
+    <!-- Calendar -->
+    <bean class="com.proschedule.core.calendar.model.Calendar">
+        <field name="year">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O ano do calendário não pode ser vazio.</message>
+            </constraint>
+            <constraint annotation="javax.validation.constraints.Min">
+                <message>O ano do calendário informado não é válido.</message>
+                <element name="value">1000</element>
+            </constraint>
+        </field>
+
+        <field name="days">
+            <constraint annotation="com.proschedule.validator.constraints.SetMin">
+                <message>Quantidade de dias inválida.</message>
+                <element name="value">360</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Day -->
+    <bean class="com.proschedule.core.calendar.model.Day">
+        <field name="date">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A data do dia não pode ser vazia.</message>
+            </constraint>
+        </field>
+
+        <field name="week">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A data do dia não pode ser vazia.</message>
+            </constraint>
+            <constraint annotation="javax.validation.constraints.DecimalMin">
+                <message>Semana do ano inválida.</message>
+                <element name="value">0</element>
+            </constraint>
+        </field>
+
+        <field name="workingDay">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>É preciso informar se haverá ou não trabalho no dia.</message>
+            </constraint>
+        </field>
+
+        <field name="workingHours">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>É preciso informar quantas horas de trabalho haverá no dia.</message>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Component -->
+    <bean class="com.proschedule.core.persistence.model.Component">
+        <field name="id">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O código do componente não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O código do componente não pode ter mais de 50 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">50</element>
+            </constraint>
+        </field>
+
+        <field name="rawMaterial">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A descrição da matéria prima não pode ser vazia.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>A descrição da matéria prima não pode ter mais de 80 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">80</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Component Detail -->
+    <bean class="com.proschedule.core.persistence.model.ComponentDetail">
+        <field name="leadTimeValue">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O valor do lead time não pode ser vazio.</message>
+            </constraint>
+        </field>
+        
+        <field name="leadTimeType">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O tipo de lead time não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O tipo de lead time não pode ter mais de 5 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">5</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Customer -->
+    <bean class="com.proschedule.core.persistence.model.Customer">
+        <field name="id">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O código do cliente não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O código do cliente não pode ter mais de 50 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">50</element>
+            </constraint>
+        </field>
+
+        <field name="name">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O nome do cliente não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O nome do cliente não pode ter mais de 80 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">80</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Operation -->
+    <bean class="com.proschedule.core.persistence.model.Operation">
+        <field name="description">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A descrição da operação não pode ser vazia.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>A descrição da operação não pode ter mais de 80 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">80</element>
+            </constraint>
+        </field>
+
+        <field name="leadTimeValue">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O valor do lead time não pode ser vazio.</message>
+            </constraint>
+        </field>
+
+        <field name="leadTimeType">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O tipo de lead time não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O tipo de lead time não pode ter mais de 5 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">5</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Operation Type -->
+    <bean class="com.proschedule.core.persistence.model.OperationType">
+        <field name="description">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A descrição da operação não pode ser vazia.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>A descrição da operação não pode ter mais de 80 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">80</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Set -->
+    <bean class="com.proschedule.core.persistence.model.Set">
+        <field name="id">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O código do conjunto não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O código do conjunto não pode ter mais de 50 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">50</element>
+            </constraint>
+        </field>
+
+        <field name="leadTimeValue">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O valor do lead time não pode ser vazio.</message>
+            </constraint>
+        </field>
+
+        <field name="leadTimeType">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O tipo de lead time não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O tipo de lead time não pode ter mais de 5 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">5</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Set Detail -->
+    <bean class="com.proschedule.core.persistence.model.SetDetail">
+        <field name="leadTimeType">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O tipo de lead time não pode ser vazio.</message>
+            </constraint>
+
+            <constraint annotation="javax.validation.constraints.Size">
+                <message>O tipo de lead time não pode ter mais de 5 caracteres.</message>
+                <element name="min">0</element>
+                <element name="max">5</element>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Set Component -->
+    <bean class="com.proschedule.core.persistence.model.SetComponent">
+        <field name="componentQuantity">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A quantidade do componente não pode ser vazia.</message>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Order -->
+    <bean class="com.proschedule.core.scheduling.model.Order">
+        <field name="id">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O código da ordem de produção não pode ser vazio.</message>
+            </constraint>
+        </field>
+
+        <field name="setQuantity">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A quantidade do conjunto da ordem de produção não pode ser vazia.</message>
+            </constraint>
+        </field>
+
+         <field name="deliveryDate">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A data de entrega da ordem de produção não pode ser vazia.</message>
+            </constraint>
+        </field>
+
+        <field name="set">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O código do conjunto não pode ser vazio.</message>
+            </constraint>
+        </field>
+
+        <field name="customer">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>O código do cliente não pode ser vazio.</message>
+            </constraint>
+        </field>
+    </bean>
+
+    <!-- Order Detail -->
+    <bean class="com.proschedule.core.scheduling.model.OrderDetail">
+        <field name="componentQuantity">
+            <constraint annotation="com.proschedule.validator.constraints.NotNull">
+                <message>A quantidade do componente não pode ser vazia.</message>
+            </constraint>
+        </field>
+    </bean>
+
+</constraint-mappings>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.proschedule.core.persistence.model.Set" table="ps_set">
+    <id column="id" length="50" name="id" type="string"/>
+    <property column="lead_time_value" name="leadTimeValue" not-null="true" type="double"/>
+    <property column="lead_time_type" length="5" name="leadTimeType" not-null="true" type="string"/>
+    <set cascade="all-delete-orphan" inverse="true" lazy="true" name="components" table="ps_set_components">
+      <key column="ps_set_id"/>
+      <one-to-many class="com.proschedule.core.persistence.model.SetComponent"/>
+    </set>
+    <set cascade="all-delete-orphan" inverse="true" lazy="true" name="details" table="ps_set_detail">
+      <key column="ps_set_id"/>
+      <one-to-many class="com.proschedule.core.persistence.model.SetDetail"/>
+    </set>
+  </class>
+</hibernate-mapping>

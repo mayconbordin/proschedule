@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.proschedule.core.scheduling.model.OperationSchedulingSetDetail" table="ps_operation_scheduling_set_detail">
+    <composite-id class="com.proschedule.core.scheduling.model.keys.OperationSchedulingSetDetailKey" name="primaryKey">
+      <key-many-to-one class="com.proschedule.core.persistence.model.Operation" column="ps_operation_id" name="operation"/>
+      <key-many-to-one class="com.proschedule.core.calendar.model.Day" column="ps_day_date" name="day"/>
+      <key-many-to-one class="com.proschedule.core.persistence.model.Set" column="ps_set_id" name="set"/>
+      <key-many-to-one class="com.proschedule.core.scheduling.model.Order" column="ps_order_id" name="order"/>
+    </composite-id>
+  </class>
+</hibernate-mapping>

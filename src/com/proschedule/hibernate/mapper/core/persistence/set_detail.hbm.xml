@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.proschedule.core.persistence.model.SetDetail" table="ps_set_detail">
+    <composite-id class="com.proschedule.core.persistence.model.keys.SetDetailKey" name="primaryKey">
+      <key-many-to-one class="com.proschedule.core.persistence.model.Operation" column="ps_operation_id" name="operation"/>
+      <key-many-to-one class="com.proschedule.core.persistence.model.Set" column="ps_set_id" name="set"/>
+    </composite-id>
+    <property column="lead_time_value" name="leadTimeValue" not-null="true" type="double"/>
+    <property column="lead_time_type" length="5" name="leadTimeType" not-null="true" type="string"/>
+    <property column="operation_order" name="order" not-null="true" type="integer"/>
+  </class>
+</hibernate-mapping>

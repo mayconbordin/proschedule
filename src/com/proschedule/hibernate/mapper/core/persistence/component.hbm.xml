@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.proschedule.core.persistence.model.Component" table="ps_component">
+    <id column="id" length="50" name="id" type="string"/>
+    <property column="raw_material" length="80" name="rawMaterial" not-null="true" type="string"/>
+    <set cascade="all-delete-orphan" inverse="true" lazy="true" name="details" table="ps_component_detail">
+      <key column="ps_component_id"/>
+      <one-to-many class="com.proschedule.core.persistence.model.ComponentDetail"/>
+    </set>
+  </class>
+</hibernate-mapping>

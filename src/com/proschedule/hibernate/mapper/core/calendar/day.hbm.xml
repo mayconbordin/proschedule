@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.proschedule.core.calendar.model.Day" table="ps_day">
+    <id column="day_date" name="date" type="date"/>
+    <property column="week" name="week" not-null="true" type="integer"/>
+    <property column="working_day" name="workingDay" not-null="true" type="boolean"/>
+    <property column="working_hours" name="workingHours" not-null="true" type="double"/>
+    <many-to-one class="com.proschedule.core.calendar.model.Calendar" column="ps_calendar_year" name="calendar"/>
+  </class>
+</hibernate-mapping>
